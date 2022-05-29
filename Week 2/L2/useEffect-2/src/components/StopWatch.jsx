@@ -1,27 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export const StopWatch = () => {
-  const [timerId, setTimeId] = useState(null);
+  // const [timerId, setTimeId] = useState(null);
+  const timerId = useRef(null);
   const [watch, setWatch] = useState(0);
 
   const start = () => {
-    if (!timerId) {
+    if (!timerId.current) {
       let id = setInterval(() => {
         setWatch((prev) => prev + 1);
       }, 1000);
-      setTimeId(id);
+      timerId.current = id;
     }
   };
 
   const pause = () => {
-    clearInterval(timerId);
-    setTimeId(null);
+    clearInterval(timerId.current);
+    timerId.current = null;
   };
 
   const reset = () => {
-    clearInterval(timerId);
+    clearInterval(timerId.current);
     setWatch(0);
-    setTimeId(null);
+    timerId.current = null;
   };
 
   return (
