@@ -5,6 +5,8 @@ import { Login } from "./pages/Login";
 import { Feeds } from "./pages/Feeds";
 
 import "./App.css";
+import { RequireAuth } from "./hoc/RequireAuth.jsx";
+import { Posts } from "./pages/Posts.jsx";
 
 function App() {
   return (
@@ -13,7 +15,22 @@ function App() {
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="login" element={<Login />} />
-        <Route path="feeds" element={<Feeds />} />
+        <Route
+          path="feeds"
+          element={
+            <RequireAuth>
+              <Feeds />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="posts"
+          element={
+            <RequireAuth>
+              <Posts />
+            </RequireAuth>
+          }
+        />
       </Routes>
     </div>
   );

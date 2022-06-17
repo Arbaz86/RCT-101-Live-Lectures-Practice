@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export const Login = () => {
+  const { Login } = useContext(AuthContext);
   const [loginCreds, setLoginCreds] = useState({});
 
   // handleing input values
@@ -16,6 +18,7 @@ export const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(loginCreds);
+    Login();
     //TODO
   };
 

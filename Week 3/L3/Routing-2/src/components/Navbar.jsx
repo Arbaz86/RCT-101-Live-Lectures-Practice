@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export const Navbar = () => {
   const navigate = useNavigate();
+  const { isAuth, Logout } = useContext(AuthContext);
+
   const handleLoginClick = () => {
     // Login screen
-    navigate("/login");
+    if (isAuth) {
+      //he wants to logout
+      Logout();
+    } else {
+      //he wants to login
+      navigate("/login");
+    }
   };
 
   return (
@@ -20,7 +29,8 @@ export const Navbar = () => {
       Navbar:
       <NavLink to="/">Home</NavLink>
       <NavLink to="/feeds">Feeds</NavLink>
-      <button onClick={handleLoginClick}>Login</button>
+      <NavLink to="/posts">Posts</NavLink>
+      <button onClick={handleLoginClick}>{isAuth ? "Logout" : "Login"}</button>
     </div>
   );
 };
