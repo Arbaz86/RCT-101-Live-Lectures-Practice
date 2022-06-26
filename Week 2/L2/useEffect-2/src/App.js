@@ -7,9 +7,9 @@ import { StopWatch } from "./components/StopWatch";
 const App = () => {
   return (
     <div className="App">
-      {/* <Todo /> */}
+      <Todo />
       {/* <Timer /> */}
-      <StopWatch />
+      {/* <StopWatch /> */}
     </div>
   );
 };

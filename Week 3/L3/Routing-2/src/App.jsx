@@ -3,9 +3,9 @@ import { Navbar } from "./components/Navbar.jsx";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Feeds } from "./pages/Feeds";
+import { RequireAuth } from "./hoc/RequireAuth";
 
 import "./App.css";
-import { RequireAuth } from "./hoc/RequireAuth.jsx";
 import { Posts } from "./pages/Posts.jsx";
 
 function App() {
